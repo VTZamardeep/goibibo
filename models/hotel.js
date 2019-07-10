@@ -2,27 +2,20 @@
  * hotel model
  */
 
-const mysql=require("mysql");
 
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database:"goibibo",
-    password: "netzwelt"
-});
+const connection=require("./mysql_conn");
+module.exports = class Hotels {
+    get_hotels(place) {
 
-module.exports=class Hotels{
-    get_hotels(place){
-         
-          return new Promise(function(resolve, reject) {
-            con.query("SELECT * FROM hotels where place='"+place+"';", function(err, result) {
-                   if (err) {
-                       reject(err);
-                   } else {
-                       resolve(result);
-                   }
-                con.end;   
-               })  
-    })
-}
+        return new Promise(function (resolve, reject) {
+            connection.con.query("SELECT * FROM Hotels where place='" + place + "';", function (err, result) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            
+            })
+        })
+    }
 }

@@ -1,0 +1,1 @@
+query for post request in reviews---------- insert into Reviews (hotelID,loginID,review,subject,upvote,downvote) values(14578,75080,'awesome room','awsm breakfast',50,5);
